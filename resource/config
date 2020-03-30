@@ -1,0 +1,2 @@
+export INET_NAME='enp0s3'
+export LOCALIP=$(ip addr | grep inet | grep ${INET_NAME} | awk '{print $2;}' | sed 's|/.*$||')

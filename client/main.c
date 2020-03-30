@@ -12,6 +12,12 @@ int datalen;
 char databuf[1024];
 
 int main(int argc, char *argv[]) {
+  if (argc < 2) {
+    perror("no address set.");
+    exit(2);
+  }
+  char *localInterfaceAddress = argv[1];
+  printf("lo")
   sd = socket(AF_INET, SOCK_DGRAM, 0);
   if (sd < 0) {
     perror("Opening datagram socket error");

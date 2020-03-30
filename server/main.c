@@ -12,6 +12,12 @@ int datalen = sizeof(databuf);
 
 int main (int argc, char *argv[ ])
 {
+  if (argc < 2) {
+    perror("no address set.");
+    exit(2);
+  }
+  char *localInterfaceAddress = argv[1];
+  printf("localInterfaceAddress is %s\n", localInterfaceAddress);
   sd = socket(AF_INET, SOCK_DGRAM, 0);
   if(sd < 0)
   {

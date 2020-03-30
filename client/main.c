@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     exit(2);
   }
   char *localInterfaceAddress = argv[1];
-  printf("lo")
+  printf("localInterfaceAddress is %s\n", localInterfaceAddress);
   sd = socket(AF_INET, SOCK_DGRAM, 0);
   if (sd < 0) {
     perror("Opening datagram socket error");
@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
   else
     printf("Binding datagram socket...OK.\n");
   group.imr_multiaddr.s_addr = inet_addr("226.1.1.1");
-  group.imr_interface.s_addr = inet_addr("192.168.3.33");
+  group.imr_interface.s_addr = inet_addr(localInterfaceAddress);
   if (setsockopt(sd, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char *)&group,
                  sizeof(group)) < 0)
   {

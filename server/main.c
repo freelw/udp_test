@@ -30,7 +30,7 @@ int main (int argc, char *argv[ ])
   groupSock.sin_family = AF_INET;
   groupSock.sin_addr.s_addr = inet_addr("226.1.1.1");
   groupSock.sin_port = htons(4321);
-  localInterface.s_addr = inet_addr("192.168.3.33");
+  localInterface.s_addr = inet_addr(localInterfaceAddress);
   if(setsockopt(sd, IPPROTO_IP, IP_MULTICAST_IF, (char *)&localInterface, sizeof(localInterface)) < 0)
   {
     perror("Setting local interface error");

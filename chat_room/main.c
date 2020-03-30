@@ -38,10 +38,10 @@ int main(int argc, char *argv[]) {
       printf("Setting the local interface...OK\n");
     }
     while (1) {
-      char tmp[1024] = 0;
+      char tmp[1024] = {0};
       memset(databuf, 0, datalen);
       scanf("%s", tmp);
-      sprintf(databuf, "%s said : %s", localInterface, tmp);
+      sprintf(databuf, "%s said : %s", localInterfaceAddress, tmp);
       if (sendto(sd, databuf, datalen, 0, (struct sockaddr *)&groupSock,
                  sizeof(groupSock)) < 0) {
         perror("Sending datagram message error");
